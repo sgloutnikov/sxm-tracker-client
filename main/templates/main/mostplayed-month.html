@@ -1,0 +1,78 @@
+{% extends "main/includes/header.html" %}
+{% block content %}
+
+    {% include "main/includes/navbar.html" %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">SiriusXM: The Highway
+                    <small>Most Popular - Last Month</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Artist</th>
+                            <th>Song</th>
+                            <th><i class="fa fa-play-circle-o" aria-hidden="true"></i></th>
+                            <th>Media</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for song in songs %}
+                            <tr>
+                                {% if song.spotify.artist|length > 0 %}
+                                    <td>{{ song.spotify.artist }}</td>
+                                {% else %}
+                                    <td>{{ song.artist }}</td>
+                                {% endif %}
+                                {% if song.spotify.title|length > 0 %}
+                                    <td><a href="{% url 'song' %}?artist={{ song.artist }}&title={{ song.title }}">
+                                        {{ song.spotify.title }} </a></td>
+                                {% else %}
+                                    <td> <a href="{% url 'song' %}?artist={{ song.artist }}&title={{ song.title }}">
+                                        {{ song.title }} </a></td>
+                                {% endif %}
+                                <td>{{ song.num_plays }}</td>
+                                <td>
+                                    <a href="{{ song.ytlink }}" target="_blank">
+                                    <i class="fa fa-youtube-play fa-1x" aria-hidden="true"></i></a>
+                                    {% if song.spotify.url|length > 0 %}
+                                        <a href="{{ song.spotify.url }}" target="_blank">
+                                        <i class="fa fa-spotify fa-1x" aria-hidden="true"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <hr><br>
+                    <p>Copyright &copy; {% now "Y" %} Stefan Gloutnikov</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+    </div>
+
+{% endblock %}

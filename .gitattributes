@@ -1,0 +1,2 @@
+Procfile merge=ours
+newrelic.ini merge=ours

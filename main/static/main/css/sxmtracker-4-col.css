@@ -1,0 +1,64 @@
+
+body {
+    padding-top: 40px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.navbar-text {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 15px;
+}
+
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.timeago-text {
+    margin: 0px;
+    padding: 0px;
+    font-size: 85%;
+}
+
+.artistsong-text {
+    text-align: center;
+    margin: 5px;
+    padding: 1px;
+}
+
+.songicons {
+    text-align: center;
+}
+
+.songicons-song .fa-2x {
+    padding-right: 1px
+}
+
+a:hover .fa-2x {
+    color: #000000
+}
+
+a:hover .fa-1x {
+    color: #000000
+}
+
+.fa-youtube-play {
+    color: #cd201f;
+}
+
+.fa-spotify {
+    color: #1ed760;
+}
+
+hr {
+    margin: 0px 0;
+}
+
+.chart {
+  width: 100%;
+  min-height: 500px;
+}
