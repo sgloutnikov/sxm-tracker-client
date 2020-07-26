@@ -11,8 +11,8 @@ MONGODB_URI = os.environ.get("MONGODB_URI")
 
 client = MongoClient(MONGODB_URI)
 db = client.get_default_database()
-db_nowplaying = db["thehighway_nowplaying"]
-db_songs = db["thehighway_songs"]
+db_nowplaying = db["theheat_nowplaying"]
+db_songs = db["theheat_songs"]
 # EST MongoDB Offset
 tz_offset = 5 * 60 * 60 * 1000
 ONE_DAY_SECONDS = 86400
