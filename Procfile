@@ -1,1 +1,1 @@
-web: gunicorn sxmtracker.wsgi
+web: newrelic-admin run-program gunicorn sxmtracker.wsgi
