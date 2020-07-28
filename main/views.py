@@ -151,7 +151,6 @@ def get_day_total():
     now = time.time()
     # Match data epoch timestamp units
     one_day_ago = int(now - ONE_DAY_SECONDS) * 1000
-    print("One Day Ago: ", one_day_ago)
     day_total = db_nowplaying.find({"start_time": {"$gte": one_day_ago}}).count()
     return day_total
 
@@ -169,7 +168,6 @@ def get_most_played_since(days_ago):
     now = time.time()
     # Match data epoch timestamp units
     time_ago = int((now - (days_ago * ONE_DAY_SECONDS)) * 1000)
-    print("Time Ago: ", time_ago)
     query = [{"$project": {"start_time": 1,
                            "artist": 1,
                            "title": 1,
