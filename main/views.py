@@ -13,9 +13,7 @@ client = MongoClient(MONGODB_URI)
 db = client.get_default_database()
 db_nowplaying = db["theheat_nowplaying"]
 db_songs = db["theheat_songs"]
-# EST MongoDB Offset
-tz_offset = 5 * 60 * 60 * 1000
-ONE_DAY_SECONDS = 86400
+ONE_DAY_SECONDS = 60 * 60 * 24
 
 
 # Now Playing Page View (Index)
@@ -29,7 +27,6 @@ def now_playing(request, page):
         song_dict[song_id]["ytlink"] = get_youtube_link(song)
         song_id += 1
     song_dict["page"] = page
-    # TODO: Handle in one call
     song_dict["dayTotal"] = get_day_total()
     song_dict["dayUniqueTotal"] = get_day_unique_total()
     return render(request, "main/nowplaying.html", {"songs": song_dict})
@@ -37,7 +34,7 @@ def now_playing(request, page):
 
 # Most Played Last Day Page
 def most_played_day(request):
-    songs = get_mostplayed_since(1)
+    songs = get_most_played_since(1)
     songList = []
     for song in songs:
         song["ytlink"] = get_youtube_link(song)
@@ -47,7 +44,7 @@ def most_played_day(request):
 
 # Most Played Last Week Page
 def most_played_week(request):
-    songs = get_mostplayed_since(7)
+    songs = get_most_played_since(7)
     songList = []
     for song in songs:
         song["ytlink"] = get_youtube_link(song)
@@ -57,7 +54,7 @@ def most_played_week(request):
 
 # Most Played Last Month Page
 def most_played_month(request):
-    songs = get_mostplayed_since(30)
+    songs = get_most_played_since(30)
     songList = []
     for song in songs:
         song["ytlink"] = get_youtube_link(song)
@@ -152,22 +149,27 @@ def get_youtube_link(song_json):
 
 def get_day_total():
     now = time.time()
-    one_day_ago = now - ONE_DAY_SECONDS
+    # Match data epoch timestamp units
+    one_day_ago = int(now - ONE_DAY_SECONDS) * 1000
+    print("One Day Ago: ", one_day_ago)
     day_total = db_nowplaying.find({"start_time": {"$gte": one_day_ago}}).count()
     return day_total
 
 
 def get_day_unique_total():
     now = time.time()
-    one_day_ago = now - ONE_DAY_SECONDS
+    # Match data epoch timestamp units
+    one_day_ago = int(now - ONE_DAY_SECONDS) * 1000
     day_unique_cursor = db_nowplaying.find({"start_time": {"$gte": one_day_ago}}).distinct("title")
     day_unique_total = len(day_unique_cursor)
     return day_unique_total
 
 
-def get_mostplayed_since(days_ago):
+def get_most_played_since(days_ago):
     now = time.time()
-    time_ago = now - (days_ago * ONE_DAY_SECONDS)
+    # Match data epoch timestamp units
+    time_ago = int((now - (days_ago * ONE_DAY_SECONDS)) * 1000)
+    print("Time Ago: ", time_ago)
     query = [{"$project": {"start_time": 1,
                            "artist": 1,
                            "title": 1,
@@ -190,8 +192,8 @@ def get_played_daily(artist, title):
     query = [{"$project": {"start_time_date": {"$toDate": "$start_time"},
                            "artist": 1,
                            "title": 1,
-                           "album": 1,
-                           "spotify": 1}},
+                           "album": 1}},
+                           # "spotify": 1}},
              {"$match": {"artist": str(artist), "title": str(title)}},
              {"$group": {"_id": {
                             "year": {"$year": "$start_time_date"},
@@ -199,7 +201,7 @@ def get_played_daily(artist, title):
                             "day": {"$dayOfMonth": "$start_time_date"}},
                          "artist": {"$first": "$artist"},
                          "title": {"$first": "$title"},
-                         "spotify": {"$first": "$spotify"},
+                         # "spotify": {"$first": "$spotify"},
                          "num_plays": {"$sum": 1},
                          "ondate": {"$first": "$start_time_date"}}},
              {"$sort": {"ondate": ASCENDING}}]
