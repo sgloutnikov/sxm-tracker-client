@@ -11,8 +11,8 @@ MONGODB_URI = os.environ.get("MONGODB_URI")
 
 client = MongoClient(MONGODB_URI)
 db = client.get_default_database()
-db_nowplaying = db["thehighway_nowplaying"]
-db_songs = db["thehighway_songs"]
+db_nowplaying = db["newcountry_nowplaying"]
+db_songs = db["newcountry_songs"]
 ONE_DAY_SECONDS = 60 * 60 * 24
 
 
