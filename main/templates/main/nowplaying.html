@@ -22,7 +22,7 @@
         <!-- Projects Row (1-4) -->
         <div class="row">
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.1.artist }}&title={{ songs.1.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.1.artist|urlencode }}&title={{ songs.1.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.1.spotify.album_image|length > 0 %}
                         {{ songs.1.spotify.album_image }}
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.2.artist }}&title={{ songs.2.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.2.artist|urlencode }}&title={{ songs.2.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.2.spotify.album_image|length > 0 %}
                         {{ songs.2.spotify.album_image }}
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.3.artist }}&title={{ songs.3.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.3.artist|urlencode }}&title={{ songs.3.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.3.spotify.album_image|length > 0 %}
                         {{ songs.3.spotify.album_image }}
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.4.artist }}&title={{ songs.4.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.4.artist|urlencode }}&title={{ songs.4.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.4.spotify.album_image|length > 0 %}
                         {{ songs.4.spotify.album_image }}
@@ -155,7 +155,7 @@
         <!-- Projects Row (5-8) -->
         <div class="row">
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.5.artist }}&title={{ songs.5.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.5.artist|urlencode }}&title={{ songs.5.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.5.spotify.album_image|length > 0 %}
                         {{ songs.5.spotify.album_image }}
@@ -187,7 +187,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.6.artist }}&title={{ songs.6.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.6.artist|urlencode }}&title={{ songs.6.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.6.spotify.album_image|length > 0 %}
                         {{ songs.6.spotify.album_image }}
@@ -219,7 +219,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.7.artist }}&title={{ songs.7.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.7.artist|urlencode }}&title={{ songs.7.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.7.spotify.album_image|length > 0 %}
                         {{ songs.7.spotify.album_image }}
@@ -251,7 +251,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.8.artist }}&title={{ songs.8.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.8.artist|urlencode }}&title={{ songs.8.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.8.spotify.album_image|length > 0 %}
                         {{ songs.8.spotify.album_image }}
@@ -288,7 +288,7 @@
         <!-- Projects Row (9-12) -->
         <div class="row">
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.9.artist }}&title={{ songs.9.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.9.artist|urlencode }}&title={{ songs.9.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.9.spotify.album_image|length > 0 %}
                         {{ songs.9.spotify.album_image }}
@@ -320,7 +320,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.10.artist }}&title={{ songs.10.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.10.artist|urlencode }}&title={{ songs.10.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.10.spotify.album_image|length > 0 %}
                         {{ songs.10.spotify.album_image }}
@@ -352,7 +352,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.11.artist }}&title={{ songs.11.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.11.artist|urlencode }}&title={{ songs.11.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.11.spotify.album_image|length > 0 %}
                         {{ songs.11.spotify.album_image }}
@@ -384,7 +384,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.12.artist }}&title={{ songs.12.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.12.artist|urlencode }}&title={{ songs.12.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.12.spotify.album_image|length > 0 %}
                         {{ songs.12.spotify.album_image }}
@@ -421,7 +421,7 @@
         <!-- Projects Row (13-16) -->
         <div class="row">
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.13.artist }}&title={{ songs.13.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.13.artist|urlencode }}&title={{ songs.13.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.13.spotify.album_image|length > 0 %}
                         {{ songs.13.spotify.album_image }}
@@ -453,7 +453,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.14.artist }}&title={{ songs.14.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.14.artist|urlencode }}&title={{ songs.14.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.14.spotify.album_image|length > 0 %}
                         {{ songs.14.spotify.album_image }}
@@ -485,7 +485,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.15.artist }}&title={{ songs.15.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.15.artist|urlencode }}&title={{ songs.15.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.15.spotify.album_image|length > 0 %}
                         {{ songs.15.spotify.album_image }}
@@ -517,7 +517,7 @@
                 </div>
             </div>
             <div class="col-md-3 portfolio-item">
-                <a href="{% url 'song' %}?artist={{ songs.16.artist }}&title={{ songs.16.title }}">
+                <a href="{% url 'song' %}?artist={{ songs.16.artist|urlencode }}&title={{ songs.16.title|urlencode }}">
                     <img class="img-responsive" src="
                     {% if songs.16.spotify.album_image|length > 0 %}
                         {{ songs.16.spotify.album_image }}
