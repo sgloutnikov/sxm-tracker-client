@@ -37,10 +37,10 @@
                                     <td>{{ song.artist }}</td>
                                 {% endif %}
                                 {% if song.spotify.title|length > 0 %}
-                                    <td><a href="{% url 'song' %}?artist={{ song.artist }}&title={{ song.title }}">
+                                    <td><a href="{% url 'song' %}?artist={{ song.artist|urlencode }}&title={{ song.title|urlencode }}">
                                         {{ song.spotify.title }} </a></td>
                                 {% else %}
-                                    <td> <a href="{% url 'song' %}?artist={{ song.artist }}&title={{ song.title }}">
+                                    <td> <a href="{% url 'song' %}?artist={{ song.artist|urlencode }}&title={{ song.title|urlencode }}">
                                         {{ song.title }} </a></td>
                                 {% endif %}
                                 <td>{{ song.num_plays }}</td>
