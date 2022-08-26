@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['thehighway.herokuapp.com', 'thehighway.gloutnikov.com']
+ALLOWED_HOSTS = ['sxm-thehighway.fly.dev']
 
 
 # Application definition
